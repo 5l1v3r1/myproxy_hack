@@ -6,8 +6,7 @@ key = 'MYPROXYKEY'
 
 def upload():
     p = ''
-    for i in range(70):
-        p += '{}.{}.{}.{}:{},'.format(random.randint(1, 999), random.randint(1, 999), random.randint(1, 999), random.randint(1, 999), random.randint(80, 65535))
+    p = ','.join(['{}.{}.{}.{}:{}'.format(random.randint(1, 999), random.randint(1, 999), random.randint(1, 999), random.randint(1, 999), random.randint(80, 65535)) for i in range(70)])
     r = requests.post(url, data={'key':key, 'type':'https', 'proxies':p}, headers={
         'Host': 'lolzteam.ru',
         'Connection': 'keep-alive',
